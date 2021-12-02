@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Pessoal GITHUB</title>
+    <script>
+        window.onload = () => {
+            btn_submit.disabled = true;
+            let validaForm = () => {
+                if(nome.value.length == 0 || senha.value.length == 0){
+                    btn_submit.disabled = true;
+                }else{
+                    btn_submit.disabled = false;
+                };
+                console.log(nome.value);
+
+                login.onsubmit = () => {
+                console.log({nome: nome.value,   senha: senha.value });
+                return false;
+            };
+            };
+            nome.onchange = validaForm;
+            senha.onchange = validaForm;
+            nome.oninput = () => {
+                let caracteresInvalidos = '!@#$%¨¨&*()_-+=§/*-+.,;:/?][{}1234567890';
+                let ultimoCaracter = nome.value.charAt(nome.value.length-1)
+                if(caracteresInvalidos.indexOf(ultimoCaracter) >=0){
+                    nome.value = nome.value.substr(0, nome.value.length-1);
+                };
+
+            };
+            salada.onchange = () => console.log(salada.value);
+            molho1.onchange = () => console.log(molho1.value);
+            molho2.onchange = () => console.log(molho2.value);
+            molho3.onchange = () => console.log(molho3.value);
+            pao.onchange = () => console.log(pao.value);
+            sobremesa.onchange = () => console.log(sobremesa.value);
+        };
+    </script>
+</head>
+
+<header>
+
+</header>
+<body>
+    <form id="login" method="post" action="https://postman-echo.com/post">
+        <p>
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome">
+        </p>
+        <p>
+            <label for="senha">Senha: </label>
+            <input type="password" name="senha" id="senha">
+        </p>
+        <button type="submit" id="btn_submit">Enviar</button>
+    </form>
+
+    <p>
+        <label for="salada">Saladas:</label>
+        <select name="nsalada" id="salada">
+            <option value="0">Verde (Folhas e Palmito)</option>
+            <option value="1">Caprese</option>
+            <option value="2">Caesar</option>
+            <option value="3" selected>Rúcula e pêras</option>
+            <option value="4">Salmão</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="molho">Molhos:</label>
+        <input type="radio" name="nmolho" id="molho1" value="0" checked>Nenhum
+        <input type="radio" name="nmolho" id="molho2" value="1">Mostarda e Mel
+        <input type="radio" name="nmolho" id="molho3" value="2">Queijos
+    </p>
+
+    <p>
+        <label for="">Complementos:</label>
+        <input type="checkbox" name="npao" id="pao">Pão Francês
+        <input type="checkbox" name="nsobremesa" id="sobremesa">Sorvete
+    </p>
+</body>
+<footer>
+
+</footer>
+</html>
