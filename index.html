@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <script>
+        window.onload = () => {
+            if(localStorage.getItem('user'))
+                nome.value = JSON.parse(localStorage.getItem('user')).nome;
+            
+
+            login.onsubmit = (evento) => {
+                
+                let user = { nome: nome.value, senha: senha.value };
+                localStorage.setItem('user', JSON.stringify(user));
+                evento.preventDefault();
+
+            };
+        };
+    </script>
+</head>
+<body>
+    <form id="login" method="post" action="https://postman-echo.com/post">
+        <p>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" autocomplete="off">
+        </p>
+        <p>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha">
+        </p>
+        <p>
+            <button type="submit">Confirmar</button>
+        </p>
+    </form>
+</body>
+</html>
